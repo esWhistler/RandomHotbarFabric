@@ -14,6 +14,12 @@ import static com.whistler.randhotbar.RandHotbar.MOD_ID;
 public class ConfigScreen {
 
     public static void openConfigScreen(Screen parent){
+        Screen configScreen = buildScreen(parent);
+
+        MINECRAFT.setScreen(configScreen);
+    }
+
+    public static Screen buildScreen(Screen parent) {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
                 .setTitle(new TranslatableText("config." + MOD_ID + ".title"));
@@ -23,9 +29,9 @@ public class ConfigScreen {
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
         general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + MOD_ID + ".variable.hotbar0"), ModConfigs.HOTBAR[0])
-                        .setDefaultValue(0.11)
-                        .setSaveConsumer(newValue -> ModConfigs.HOTBAR[0] = newValue)
-                        .build());
+                .setDefaultValue(0.11)
+                .setSaveConsumer(newValue -> ModConfigs.HOTBAR[0] = newValue)
+                .build());
 
         general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + MOD_ID + ".variable.hotbar1"), ModConfigs.HOTBAR[1])
                 .setDefaultValue(0.11)
@@ -68,16 +74,14 @@ public class ConfigScreen {
                 .build());
 
         builder.setSavingRunnable(() -> {
-            try {
-                ModConfigs.saveConfigs();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
+                    try {
+                        ModConfigs.saveConfigs();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
         );
 
-        Screen screen = builder.build();
-
-        MINECRAFT.setScreen(screen);
+        return builder.build();
     }
 }

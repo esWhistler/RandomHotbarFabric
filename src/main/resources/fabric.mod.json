@@ -10,16 +10,20 @@
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/placeholder",
-    "sources": "https://github.com/esWhistler/RandomHotbar-Fabric"
+    "sources": "https://github.com/esWhistler/RandomHotbarFabric",
+    "issues": "https://github.com/esWhistler/RandomHotbarFabric/issues"
   },
 
-  "license": "MIT License",
+  "license": "MIT",
   "icon": "assets/randhotbar/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
       "com.whistler.randhotbar.RandHotbar"
+    ],
+    "modmenu": [
+      "com.whistler.randhotbar.RandHotbarMenuIntegration"
     ]
   },
   "mixins": [
@@ -35,6 +39,6 @@
     "cloth-config": ">=6.2.62"
   },
   "suggests": {
-    "another-mod": "*"
+    "modmenu": "*"
   }
 }
