@@ -1,36 +1,38 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "randhotbar",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Hotbar Randomizer",
+  "description": "This mod let's you toggle a randomizer that chooses a different hotbar slot after placing a block, great for getting block variety in your builds. You can even set the probability of getting each slot!",
   "authors": [
-    "Me!"
+    "Whistler"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/placeholder",
+    "sources": "https://github.com/esWhistler/RandomHotbar-Fabric"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "MIT License",
+  "icon": "assets/randhotbar/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.whistler.randhotbar.RandHotbar"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "randhotbar.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.14.6",
     "fabric": "*",
     "minecraft": "~1.18.2",
-    "java": ">=17"
+    "java": ">=17",
+    "fabric-key-binding-api-v1": "*",
+    "cloth-config": ">=6.2.62"
   },
   "suggests": {
     "another-mod": "*"

@@ -1,0 +1,18 @@
+{
+  "key.randhotbar.category": "Random Hotbar",
+  "key.randhotbar.openmenu": "Open Config Menu",
+  "key.randhotbar.toggle": "Toggle Randomizer",
+  "message.randhotbar.toggle.on": "Randomizer is turned on",
+  "message.randhotbar.toggle.off": "Randomizer is turned off",
+  "config.randhotbar.title": "Hotbar Randomizer",
+  "config.randhotbar.category": "General Category",
+  "config.randhotbar.variable.hotbar0": "Hotbar 1",
+  "config.randhotbar.variable.hotbar1": "Hotbar 2",
+  "config.randhotbar.variable.hotbar2": "Hotbar 3",
+  "config.randhotbar.variable.hotbar3": "Hotbar 4",
+  "config.randhotbar.variable.hotbar4": "Hotbar 5",
+  "config.randhotbar.variable.hotbar5": "Hotbar 6",
+  "config.randhotbar.variable.hotbar6": "Hotbar 7",
+  "config.randhotbar.variable.hotbar7": "Hotbar 8",
+  "config.randhotbar.variable.hotbar8": "Hotbar 9"
+}
