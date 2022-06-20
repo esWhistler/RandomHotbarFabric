@@ -1,7 +1,9 @@
 package com.whistler.randhotbar;
 
+import com.whistler.randhotbar.config.ConfigScreen;
 import com.whistler.randhotbar.config.ModConfigs;
 import com.whistler.randhotbar.util.IEntityDataSaver;
+import com.whistler.randhotbar.util.RandomizerFunction;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -17,9 +19,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-
-import static com.whistler.randhotbar.config.ConfigScreen.openConfigScreen;
-import static com.whistler.randhotbar.util.RandomizerFunction.randomizeHotbar;
 
 public class RandHotbar implements ModInitializer {
 	public static final String MOD_ID = "randhotbar";
@@ -44,7 +43,7 @@ public class RandHotbar implements ModInitializer {
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (openModMenu.wasPressed()) {
-				openConfigScreen(MINECRAFT.currentScreen);
+				ConfigScreen.openConfigScreen(MINECRAFT.currentScreen);
 			}
 			while (toggleRandomizer.wasPressed()) {
 				IEntityDataSaver player = (IEntityDataSaver) MINECRAFT.player;
@@ -57,7 +56,7 @@ public class RandHotbar implements ModInitializer {
 
 		UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
 			if(((IEntityDataSaver)player).getPersistentData().getBoolean("rhActivated")){
-				randomizeHotbar();
+				RandomizerFunction.randomizeHotbar();
 			}
 			return ActionResult.PASS;
 		});

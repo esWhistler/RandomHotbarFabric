@@ -1,10 +1,9 @@
 package com.whistler.randhotbar.util;
 
+import com.whistler.randhotbar.RandHotbar;
 import com.whistler.randhotbar.config.ModConfigs;
 
 import java.util.concurrent.ThreadLocalRandom;
-
-import static com.whistler.randhotbar.RandHotbar.MINECRAFT;
 
 public abstract class RandomizerFunction {
     public static void randomizeHotbar(){
@@ -24,15 +23,15 @@ public abstract class RandomizerFunction {
 
 
         if(hotbarchance[0] > 0 && result < hotbarchance[0]){
-            assert MINECRAFT.player != null;
-            MINECRAFT.player.getInventory().selectedSlot = 0;
+            assert RandHotbar.MINECRAFT.player != null;
+            RandHotbar.MINECRAFT.player.getInventory().selectedSlot = 0;
             return;
         }
 
         for (int i = 1; i < 9; ++i){
             if(hotbarchance[i] > hotbarchance[i - 1] && result < hotbarchance[i]){
-                assert MINECRAFT.player != null;
-                MINECRAFT.player.getInventory().selectedSlot = i;
+                assert RandHotbar.MINECRAFT.player != null;
+                RandHotbar.MINECRAFT.player.getInventory().selectedSlot = i;
                 return;
             }
         }
