@@ -32,7 +32,7 @@ public class RandHotbar implements ModInitializer {
 	public void onInitialize() {
 		//Config MUST be registered first
 		try {
-			ModConfigs.registerConfigs();
+			ModConfigs.registerDefaultConfigs();
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

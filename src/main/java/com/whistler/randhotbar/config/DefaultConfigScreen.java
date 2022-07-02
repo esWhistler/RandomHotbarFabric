@@ -74,7 +74,7 @@ public class DefaultConfigScreen {
 
         builder.setSavingRunnable(() -> {
                     try {
-                        ModConfigs.saveConfigs();
+                        ModConfigs.saveDefaultConfigs();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

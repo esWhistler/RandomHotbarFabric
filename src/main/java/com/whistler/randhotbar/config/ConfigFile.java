@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigFile {
-    public static File configFile;
+    protected static File configFile;
 
     public static void create(String pathname, Properties properties, String comment) throws IOException {
         configFile = new File(pathname);

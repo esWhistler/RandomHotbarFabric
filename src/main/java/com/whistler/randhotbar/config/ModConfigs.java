@@ -7,18 +7,18 @@ public class ModConfigs {
 
     public static double[] HOTBAR = new double[9];
 
-    public static void registerConfigs() throws IOException {
+    public static void registerDefaultConfigs() throws IOException {
         Properties props = new Properties();
-        props.setProperty("hotbar.chances", "0.11,0.11,0.11,0.11,0.11,0.11,0.11,0.11,0.11");
-        ConfigFile.create("./config/randhotbar.properties", props, "Hotbar Randomizer Settings");
+        props.setProperty("hotbar.chances", "11.12,11.11,11.11,11.11,11.11,11.11,11.11,11.11,11.11");
+        ConfigFile.create("./config/randhotbarDefault.properties", props, "Hotbar Randomizer Default Settings");
 
         HOTBAR = stringToDoubleArray(ConfigFile.read("hotbar.chances"));
     }
 
-    public static void saveConfigs() throws IOException {
+    public static void saveDefaultConfigs() throws IOException {
         Properties props = new Properties();
         props.setProperty("hotbar.chances", doubleArrayToString(HOTBAR));
-        ConfigFile.update(props, "Hotbar Randomizer Settings");
+        ConfigFile.update(props, "Hotbar Randomizer Default Settings");
     }
 
     private static double[] stringToDoubleArray(String string){
