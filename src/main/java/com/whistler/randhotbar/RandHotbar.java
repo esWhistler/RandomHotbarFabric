@@ -2,12 +2,12 @@ package com.whistler.randhotbar;
 
 import com.whistler.randhotbar.config.DefaultConfigScreen;
 import com.whistler.randhotbar.config.ModConfigs;
+import com.whistler.randhotbar.event.AfterBlockPlacedCallback;
 import com.whistler.randhotbar.util.IEntityDataSaver;
 import com.whistler.randhotbar.util.RandomizerFunction;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
@@ -54,7 +54,7 @@ public class RandHotbar implements ModInitializer {
 			}
 		});
 
-		UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
+		AfterBlockPlacedCallback.EVENT.register((player, world, hand, hitResult) -> {
 			if(((IEntityDataSaver)player).getPersistentData().getBoolean("rhActivated")){
 				RandomizerFunction.randomizeHotbar();
 			}
