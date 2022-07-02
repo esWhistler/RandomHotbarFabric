@@ -1,6 +1,6 @@
 package com.whistler.randhotbar;
 
-import com.whistler.randhotbar.config.ConfigScreen;
+import com.whistler.randhotbar.config.DefaultConfigScreen;
 import com.whistler.randhotbar.config.ModConfigs;
 import com.whistler.randhotbar.util.IEntityDataSaver;
 import com.whistler.randhotbar.util.RandomizerFunction;
@@ -43,7 +43,7 @@ public class RandHotbar implements ModInitializer {
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (openModMenu.wasPressed()) {
-				ConfigScreen.openConfigScreen(MINECRAFT.currentScreen);
+				DefaultConfigScreen.openConfigScreen(MINECRAFT.currentScreen);
 			}
 			while (toggleRandomizer.wasPressed()) {
 				IEntityDataSaver player = (IEntityDataSaver) MINECRAFT.player;

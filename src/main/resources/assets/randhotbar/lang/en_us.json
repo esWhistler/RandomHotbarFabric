@@ -4,6 +4,7 @@
   "key.randhotbar.toggle": "Toggle Randomizer",
   "message.randhotbar.toggle.on": "Randomizer is turned on",
   "message.randhotbar.toggle.off": "Randomizer is turned off",
+  "config.randhotbar.default.title": "Hotbar Randomizer Default Values",
   "config.randhotbar.title": "Hotbar Randomizer",
   "config.randhotbar.category": "General Category",
   "config.randhotbar.variable.hotbar0": "Hotbar 1",

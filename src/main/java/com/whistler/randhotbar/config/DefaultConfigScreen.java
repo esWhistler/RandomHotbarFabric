@@ -10,7 +10,7 @@ import net.minecraft.text.TranslatableText;
 import java.io.IOException;
 
 
-public class ConfigScreen {
+public class DefaultConfigScreen {
 
     public static void openConfigScreen(Screen parent){
         Screen configScreen = buildScreen(parent);
@@ -21,7 +21,7 @@ public class ConfigScreen {
     public static Screen buildScreen(Screen parent) {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
-                .setTitle(new TranslatableText("config." + RandHotbar.MOD_ID + ".title"));
+                .setTitle(new TranslatableText("config." + RandHotbar.MOD_ID + ".default.title"));
 
         ConfigCategory general = builder.getOrCreateCategory(new TranslatableText("config." + RandHotbar.MOD_ID + ".category"));
 

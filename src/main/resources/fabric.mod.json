@@ -23,7 +23,7 @@
       "com.whistler.randhotbar.RandHotbar"
     ],
     "modmenu": [
-      "com.whistler.randhotbar.RandHotbarMenuIntegration"
+      "com.whistler.randhotbar.integration.ModMenuIntegration"
     ]
   },
   "mixins": [
