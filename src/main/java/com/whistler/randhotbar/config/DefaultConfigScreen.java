@@ -12,13 +12,9 @@ import java.io.IOException;
 
 public class DefaultConfigScreen {
 
-    public static void openConfigScreen(Screen parent){
-        Screen configScreen = buildScreen(parent);
+    public static Screen buildScreen(Screen parent) throws IOException {
+        double[] currentDefaultConfigs = RandHotbar.defaultConfigManager.readConfigs();
 
-        RandHotbar.MINECRAFT.setScreen(configScreen);
-    }
-
-    public static Screen buildScreen(Screen parent) {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
                 .setTitle(new TranslatableText("config." + RandHotbar.MOD_ID + ".default.title"));
@@ -27,59 +23,66 @@ public class DefaultConfigScreen {
 
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
-        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar0"), ModConfigs.HOTBAR[0])
+        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar0"), currentDefaultConfigs[0])
                 .setDefaultValue(0.11)
-                .setSaveConsumer(newValue -> ModConfigs.HOTBAR[0] = newValue)
+                .setSaveConsumer(newValue -> currentDefaultConfigs[0] = newValue)
+                .build()
+        );
+
+        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar1"), currentDefaultConfigs[1])
+                .setDefaultValue(0.11)
+                .setSaveConsumer(newValue -> currentDefaultConfigs[1] = newValue)
+                .build()
+        );
+
+        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar2"), currentDefaultConfigs[2])
+                .setDefaultValue(0.11)
+                .setSaveConsumer(newValue -> currentDefaultConfigs[2] = newValue)
+                .build()
+        );
+
+        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar3"), currentDefaultConfigs[3])
+                .setDefaultValue(0.11)
+                .setSaveConsumer(newValue -> currentDefaultConfigs[3] = newValue)
+                .build()
+        );
+
+        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar4"), currentDefaultConfigs[4])
+                .setDefaultValue(0.11)
+                .setSaveConsumer(newValue -> currentDefaultConfigs[4] = newValue)
+                .build()
+        );
+
+        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar5"), currentDefaultConfigs[5])
+                .setDefaultValue(0.11)
+                .setSaveConsumer(newValue -> currentDefaultConfigs[5] = newValue)
                 .build());
 
-        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar1"), ModConfigs.HOTBAR[1])
+        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar6"), currentDefaultConfigs[6])
                 .setDefaultValue(0.11)
-                .setSaveConsumer(newValue -> ModConfigs.HOTBAR[1] = newValue)
-                .build());
+                .setSaveConsumer(newValue -> currentDefaultConfigs[6] = newValue)
+                .build()
+        );
 
-        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar2"), ModConfigs.HOTBAR[2])
+        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar7"), currentDefaultConfigs[7])
                 .setDefaultValue(0.11)
-                .setSaveConsumer(newValue -> ModConfigs.HOTBAR[2] = newValue)
-                .build());
+                .setSaveConsumer(newValue -> currentDefaultConfigs[7] = newValue)
+                .build()
+        );
 
-        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar3"), ModConfigs.HOTBAR[3])
+        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar8"), currentDefaultConfigs[8])
                 .setDefaultValue(0.11)
-                .setSaveConsumer(newValue -> ModConfigs.HOTBAR[3] = newValue)
-                .build());
-
-        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar4"), ModConfigs.HOTBAR[4])
-                .setDefaultValue(0.11)
-                .setSaveConsumer(newValue -> ModConfigs.HOTBAR[4] = newValue)
-                .build());
-
-        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar5"), ModConfigs.HOTBAR[5])
-                .setDefaultValue(0.11)
-                .setSaveConsumer(newValue -> ModConfigs.HOTBAR[5] = newValue)
-                .build());
-
-        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar6"), ModConfigs.HOTBAR[6])
-                .setDefaultValue(0.11)
-                .setSaveConsumer(newValue -> ModConfigs.HOTBAR[6] = newValue)
-                .build());
-
-        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar7"), ModConfigs.HOTBAR[7])
-                .setDefaultValue(0.11)
-                .setSaveConsumer(newValue -> ModConfigs.HOTBAR[7] = newValue)
-                .build());
-
-        general.addEntry(entryBuilder.startDoubleField(new TranslatableText("config." + RandHotbar.MOD_ID + ".variable.hotbar8"), ModConfigs.HOTBAR[8])
-                .setDefaultValue(0.11)
-                .setSaveConsumer(newValue -> ModConfigs.HOTBAR[8] = newValue)
-                .build());
+                .setSaveConsumer(newValue -> currentDefaultConfigs[8] = newValue)
+                .build()
+        );
 
         builder.setSavingRunnable(() -> {
                     try {
-                        ModConfigs.saveDefaultConfigs();
+                        RandHotbar.defaultConfigManager.saveConfigs(currentDefaultConfigs);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                }
-        );
+        });
 
         return builder.build();
     }
