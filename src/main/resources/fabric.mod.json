@@ -17,7 +17,7 @@
   "license": "MIT",
   "icon": "assets/randhotbar/icon.png",
 
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "main": [
       "com.whistler.randhotbar.RandHotbar"
