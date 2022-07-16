@@ -4,8 +4,7 @@
   "package": "com.whistler.randhotbar.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ClientPlayerAfterBlockPlaced",
-    "ModEntityDataSaver"
+    "ClientPlayerAfterBlockPlaced"
   ],
   "client": [
   ],

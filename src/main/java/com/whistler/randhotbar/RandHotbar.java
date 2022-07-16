@@ -4,7 +4,6 @@ import com.whistler.randhotbar.config.WorldConfigManager;
 import com.whistler.randhotbar.config.WorldConfigScreen;
 import com.whistler.randhotbar.config.DefaultConfigManager;
 import com.whistler.randhotbar.event.AfterBlockPlacedCallback;
-import com.whistler.randhotbar.util.IEntityDataSaver;
 import com.whistler.randhotbar.util.UtilFunctions;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -35,6 +34,7 @@ public class RandHotbar implements ModInitializer {
 	public static WorldConfigManager worldConfigManager;
 
 	public static double[] currentSettings = new double[9];
+	public static boolean randomizerActive = false;
 
 	@Override
 	public void onInitialize() {
@@ -61,23 +61,11 @@ public class RandHotbar implements ModInitializer {
 			}
 		});
 
-		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			IEntityDataSaver player = (IEntityDataSaver)MINECRAFT.player;
-			assert MINECRAFT.player != null;
-
-			while (openModMenu.wasPressed()) {
-				new WorldConfigScreen().openConfigScreen(MINECRAFT.currentScreen);
-			}
-			while (toggleRandomizer.wasPressed()) {
-				boolean wasRhActivated = player.getPersistentData().getBoolean("rhActivated");
-				player.getPersistentData().putBoolean("rhActivated", !wasRhActivated);
-				MINECRAFT.inGameHud.addChatMessage(MessageType.SYSTEM,(wasRhActivated ? new TranslatableText("message." + MOD_ID + ".toggle.off") : new TranslatableText("message." + MOD_ID + ".toggle.on")), MINECRAFT.player.getUuid());
-			}
-		});
-
+		//Events
 		AfterBlockPlacedCallback.EVENT.register((player, world, hand, hitResult) -> {
-			if(((IEntityDataSaver)player).getPersistentData().getBoolean("rhActivated")){
-				UtilFunctions.randomizeHotbar();
+			if(randomizerActive){
+				assert MINECRAFT.player != null;
+				MINECRAFT.player.getInventory().selectedSlot = UtilFunctions.weighedRandomizer(currentSettings);
 			}
 			return ActionResult.PASS;
 		});
