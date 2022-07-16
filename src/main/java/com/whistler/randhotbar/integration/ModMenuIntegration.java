@@ -2,7 +2,7 @@ package com.whistler.randhotbar.integration;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import com.whistler.randhotbar.config.DefaultConfigScreen;
+import com.whistler.randhotbar.config.ConfigScreen;
 import net.minecraft.client.gui.screen.Screen;
 
 import java.io.IOException;
@@ -12,7 +12,7 @@ public class ModMenuIntegration implements ModMenuApi {
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
         return (ConfigScreenFactory<Screen>) parent -> {
             try {
-                return DefaultConfigScreen.buildScreen(parent);
+                return ConfigScreen.buildScreen(parent);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

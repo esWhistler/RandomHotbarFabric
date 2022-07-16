@@ -1,9 +1,6 @@
 package com.whistler.randhotbar.config;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class ConfigFile {
@@ -21,14 +18,17 @@ public class ConfigFile {
     }
 
     public String read(String propertyName) throws IOException {
+        Properties props = this.getProperties();
+
+        return props.getProperty(propertyName);
+    }
+
+    public Properties getProperties() throws IOException {
         FileReader reader = new FileReader(this.configFile);
         Properties props = new Properties();
         props.load(reader);
-
-        String getProperty = props.getProperty(propertyName);
-
         reader.close();
 
-        return getProperty;
+        return props;
     }
 }

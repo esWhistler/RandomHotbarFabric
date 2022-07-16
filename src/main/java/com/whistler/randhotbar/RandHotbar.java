@@ -1,9 +1,8 @@
 package com.whistler.randhotbar;
 
-import com.whistler.randhotbar.config.WorldConfigManager;
-import com.whistler.randhotbar.config.WorldConfigScreen;
-import com.whistler.randhotbar.config.DefaultConfigManager;
+import com.whistler.randhotbar.config.ConfigManager;
 import com.whistler.randhotbar.event.AfterBlockPlacedCallback;
+import com.whistler.randhotbar.keybinding.Keybinds;
 import com.whistler.randhotbar.util.UtilFunctions;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -30,8 +29,7 @@ public class RandHotbar implements ModInitializer {
 	private KeyBinding openModMenu;
 	private KeyBinding toggleRandomizer;
 
-	public static DefaultConfigManager defaultConfigManager;
-	public static WorldConfigManager worldConfigManager;
+	public static ConfigManager configManager;
 
 	public static double[] currentSettings = new double[9];
 	public static boolean randomizerActive = false;
@@ -40,11 +38,11 @@ public class RandHotbar implements ModInitializer {
 	public void onInitialize() {
 		//Config MUST be registered first
 		try {
-			defaultConfigManager = new DefaultConfigManager();
-		} catch (IOException e) {
+			configManager = new ConfigManager();
+			currentSettings = configManager.readConfigs(configManager.getLastUsed());
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		worldConfigManager = new WorldConfigManager();
 
 		//Initialize keybindings
 		openModMenu = KeyBindingHelper.registerKeyBinding(new KeyBinding("key." + MOD_ID + ".openmenu", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_O, "key." + MOD_ID + ".category"));
