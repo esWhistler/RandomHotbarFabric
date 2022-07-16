@@ -33,12 +33,6 @@ public class ConfigManager extends AbstractConfigManager {
         }
     }
 
-    public void saveConfigs(double[] configs, String type) throws IOException {
-        Properties props = this.config.getProperties();
-        props.setProperty(type, doubleArrayToString(configs));
-        this.config.write(props, COMMENT);
-    }
-
     public double[] readConfigs(String type) throws IOException {
         if (Arrays.asList(CONFIG_TYPES).contains(type)){
             String stringedArray = this.config.read(type);
