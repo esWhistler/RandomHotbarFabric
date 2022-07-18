@@ -19,16 +19,9 @@ public class ConfigManager extends AbstractConfigManager {
         if(! new File(configPath).isFile()){
             Properties props = new Properties();
             props.setProperty("lastUsed", "default");
-            props.setProperty("default", DEFAULT_VALUES);
-            props.setProperty("preset1", DEFAULT_VALUES);
-            props.setProperty("preset2", DEFAULT_VALUES);
-            props.setProperty("preset3", DEFAULT_VALUES);
-            props.setProperty("preset4", DEFAULT_VALUES);
-            props.setProperty("preset5", DEFAULT_VALUES);
-            props.setProperty("preset6", DEFAULT_VALUES);
-            props.setProperty("preset7", DEFAULT_VALUES);
-            props.setProperty("preset8", DEFAULT_VALUES);
-            props.setProperty("preset9", DEFAULT_VALUES);
+            for(int i = 0; i < 10; ++i){
+                props.setProperty(i == 0 ? "default" : "preset" + i, DEFAULT_VALUES);
+            }
             config.write(props, COMMENT);
         }
     }
@@ -42,18 +35,17 @@ public class ConfigManager extends AbstractConfigManager {
         }
     }
 
+    public void saveDefault(double[] configs) throws IOException {
+        Properties props = this.config.getProperties();
+        props.setProperty("default", doubleArrayToString(configs));
+        this.config.write(props, COMMENT);
+    }
+
     public void saveAll(double[][] allConfigs) throws IOException {
         Properties props = this.config.getProperties();
-        props.setProperty("default", doubleArrayToString(allConfigs[0]));
-        props.setProperty("preset1", doubleArrayToString(allConfigs[1]));
-        props.setProperty("preset2", doubleArrayToString(allConfigs[2]));
-        props.setProperty("preset3", doubleArrayToString(allConfigs[3]));
-        props.setProperty("preset4", doubleArrayToString(allConfigs[4]));
-        props.setProperty("preset5", doubleArrayToString(allConfigs[5]));
-        props.setProperty("preset6", doubleArrayToString(allConfigs[6]));
-        props.setProperty("preset7", doubleArrayToString(allConfigs[7]));
-        props.setProperty("preset8", doubleArrayToString(allConfigs[8]));
-        props.setProperty("preset9", doubleArrayToString(allConfigs[9]));
+        for(int i = 0; i < 10; ++i){
+            props.setProperty(i == 0 ? "default" : "preset" + i, doubleArrayToString(allConfigs[i]));
+        }
         this.config.write(props, COMMENT);
     }
 
