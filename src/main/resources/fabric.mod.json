@@ -8,13 +8,16 @@
   "authors": [
     "Whistler"
   ],
+  "contributors": [
+    "Turnel"
+  ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/placeholder",
     "sources": "https://github.com/esWhistler/RandomHotbarFabric",
     "issues": "https://github.com/esWhistler/RandomHotbarFabric/issues"
   },
 
-  "license": "MIT",
+  "license": "MIT License",
   "icon": "assets/randhotbar/icon.png",
 
   "environment": "client",
@@ -38,8 +41,10 @@
     "fabric-key-binding-api-v1": "*",
     "cloth-config": ">=6.2.62"
   },
-  "suggests": {
-    "modmenu": "*",
+  "recommends": {
     "amecs": ">=1.3.8+mc.1.18.2"
+  },
+  "suggests": {
+    "modmenu": "*"
   }
 }

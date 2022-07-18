@@ -7,11 +7,16 @@ import com.whistler.randhotbar.keybinding.KeybindsCommon;
 import com.whistler.randhotbar.keybinding.StandardKebinds;
 import com.whistler.randhotbar.util.UtilFunctions;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.util.ActionResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 
 public class RandHotbar implements ModInitializer {
 	public static final String MOD_ID = "randhotbar";
@@ -49,5 +54,20 @@ public class RandHotbar implements ModInitializer {
 			return ActionResult.PASS;
 		});
 
+		HudRenderCallback.EVENT.register((matrixStack, delta) -> {
+			if(KeybindsCommon.randomizerActive && !MINECRAFT.options.hudHidden){
+				NumberFormat nf = NumberFormat.getInstance();
+				nf.setMaximumFractionDigits(1);
+				nf.setMinimumFractionDigits(1);
+				nf.setMinimumIntegerDigits(2);
+				nf.setRoundingMode(RoundingMode.HALF_UP);
+				TextRenderer textRenderer = MINECRAFT.textRenderer;
+				float widthOffset = MINECRAFT.getWindow().getScaledWidth()/2.0F - 91F;
+				float heightOffset = MINECRAFT.getWindow().getScaledHeight() - 30.0F;
+				for (int i = 0; i < 9; ++i) {
+					textRenderer.drawWithShadow(matrixStack, nf.format(currentSettings[i]), widthOffset + i*20.1F, heightOffset, (i%2 == 0 ? 999999 : -1));
+				}
+			}
+		});
 	}
 }

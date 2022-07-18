@@ -30,6 +30,7 @@ dependencies {
 	modImplementation fabricApi.module("fabric-api-base", project.fabric_version)
 	modImplementation fabricApi.module("fabric-lifecycle-events-v1", project.fabric_version)
 	modImplementation fabricApi.module("fabric-key-binding-api-v1", project.fabric_version)
+	modImplementation fabricApi.module("fabric-rendering-v1", project.fabric_version)
 
 	// full Fabric API to keep every dependency working while testing
 	modLocalRuntime "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"

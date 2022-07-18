@@ -6,8 +6,6 @@
   "mixins": [
     "ClientPlayerAfterBlockPlaced"
   ],
-  "client": [
-  ],
   "injectors": {
     "defaultRequire": 1
   }

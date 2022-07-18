@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class ConfigManager extends AbstractConfigManager {
     private final String COMMENT = "Hotbar Randomizer Settings";
-    private final String DEFAULT_VALUES = "11.12,11.11,11.11,11.11,11.11,11.11,11.11,11.11,11.11";
+    private final String DEFAULT_VALUES = "11.2,11.1,11.1,11.1,11.1,11.1,11.1,11.1,11.1";
     private final String[] CONFIG_TYPES = {"default", "preset1", "preset2", "preset3", "preset4", "preset5", "preset6", "preset7", "preset8", "preset9"};
 
     private final ConfigFile config;

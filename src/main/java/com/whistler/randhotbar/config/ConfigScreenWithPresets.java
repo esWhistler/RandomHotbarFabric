@@ -47,6 +47,8 @@ public class ConfigScreenWithPresets { //Amecs present
         builder.setSavingRunnable(() -> {
             try {
                 RandHotbar.configManager.saveAll(currentConfigs);
+                RandHotbar.currentSettings = RandHotbar.configManager.readConfigs(RandHotbar.configManager.getLastUsed());
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
