@@ -18,7 +18,6 @@ public class RandHotbar implements ModInitializer {
 	public static ConfigManager configManager;
 
 	public static double[] currentSettings = new double[9];
-	public static boolean randomizerActive = false;
 
 	@Override
 	public void onInitialize() {
@@ -34,13 +33,13 @@ public class RandHotbar implements ModInitializer {
 
 		//Events
 		AfterBlockPlacedCallback.EVENT.register((player, world, hand, hitResult) -> {
-			if(randomizerActive){
+			if(Keybinds.randomizerActive){
+				LOGGER.info("randomizerActive working");
 				assert MINECRAFT.player != null;
 				MINECRAFT.player.getInventory().selectedSlot = UtilFunctions.weighedRandomizer(currentSettings);
 			}
 			return ActionResult.PASS;
 		});
 
-		LOGGER.info("Hotbar Randomizer initialized");
 	}
 }
