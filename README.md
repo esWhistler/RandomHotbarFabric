@@ -8,6 +8,7 @@
 [![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/esWhistler/RandomHotbarFabric?include_prereleases)](https://github.com/esWhistler/RandomHotbarFabric/releases)
 
 Minecraft Mod for fabric that provides a toggleable and configurable randomizer to randomly place blocks from your hotbar.
+
 This mod is in testing stages and being actively developed, be prepeared to meet unforseen bugs and beware the ugly gui.
 
 Requires [**Fabric API**](https://www.curseforge.com/minecraft/mc-mods/fabric-api) and [**Cloth Config**](https://www.curseforge.com/minecraft/mc-mods/cloth-config).
