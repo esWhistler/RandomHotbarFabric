@@ -12,6 +12,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.util.ActionResult;
+import net.minecraft.world.GameMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,7 +64,7 @@ public class RandHotbar implements ModInitializer {
 				nf.setRoundingMode(RoundingMode.HALF_UP);
 				TextRenderer textRenderer = MINECRAFT.textRenderer;
 				float widthOffset = MINECRAFT.getWindow().getScaledWidth()/2.0F - 91F;
-				float heightOffset = MINECRAFT.getWindow().getScaledHeight() - 30.0F;
+				float heightOffset = (MINECRAFT.interactionManager.getCurrentGameMode() == GameMode.CREATIVE ? MINECRAFT.getWindow().getScaledHeight() - 30.0F : MINECRAFT.getWindow().getScaledHeight() - 48.0F);
 				for (int i = 0; i < 9; ++i) {
 					textRenderer.drawWithShadow(matrixStack, nf.format(currentSettings[i]), widthOffset + i*20.1F, heightOffset, (i%2 == 0 ? 999999 : -1));
 				}
