@@ -55,7 +55,7 @@ public class RandHotbar implements ModInitializer {
 		});
 
 		HudRenderCallback.EVENT.register((matrixStack, delta) -> {
-			if(KeybindsCommon.randomizerActive && !MINECRAFT.options.hudHidden){
+			if(MINECRAFT.interactionManager.getCurrentGameMode() != GameMode.SPECTATOR && KeybindsCommon.randomizerActive && !MINECRAFT.options.hudHidden){
 				NumberFormat nf = NumberFormat.getInstance();
 				nf.setMaximumFractionDigits(1);
 				nf.setMinimumFractionDigits(1);

@@ -7,6 +7,7 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.MessageType;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.world.GameMode;
 import org.lwjgl.glfw.GLFW;
 
 public abstract class KeybindsCommon {
@@ -20,7 +21,7 @@ public abstract class KeybindsCommon {
         toggleRandomizer = KeyBindingHelper.registerKeyBinding(new KeyBinding("key." + RandHotbar.MOD_ID + ".toggle", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_Y, "key." + RandHotbar.MOD_ID + ".category"));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while (toggleRandomizer.wasPressed()) {
+            while (toggleRandomizer.wasPressed() && RandHotbar.MINECRAFT.interactionManager.getCurrentGameMode() != GameMode.SPECTATOR) {
                 randomizerActive = !randomizerActive;
                 assert RandHotbar.MINECRAFT.player != null;
                 RandHotbar.MINECRAFT.inGameHud.addChatMessage(MessageType.SYSTEM,(randomizerActive ? new TranslatableText("message." + RandHotbar.MOD_ID + ".toggle.on") : new TranslatableText("message." + RandHotbar.MOD_ID + ".toggle.off")), RandHotbar.MINECRAFT.player.getUuid());

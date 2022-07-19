@@ -10,6 +10,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
+import net.minecraft.world.GameMode;
 import org.lwjgl.glfw.GLFW;
 
 import java.io.IOException;
@@ -33,7 +34,7 @@ public abstract class AmecsKeybinds extends KeybindsCommon{
                 }
 
                 for (int i = 0; i < 10; ++i) {
-                    while (selectPresets[i].wasPressed() && KeybindsCommon.randomizerActive) {
+                    while (selectPresets[i].wasPressed() && KeybindsCommon.randomizerActive && RandHotbar.MINECRAFT.interactionManager.getCurrentGameMode() != GameMode.SPECTATOR) {
                         RandHotbar.currentSettings = RandHotbar.configManager.readConfigs(i == 0 ? "default" : "preset" + i);
                         RandHotbar.configManager.setLastUsed(i == 0 ? "default" : "preset" + i);
                         RandHotbar.MINECRAFT.inGameHud.setOverlayMessage(Text.of((i == 0 ? "default" : "preset" + i)), false);
