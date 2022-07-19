@@ -56,11 +56,13 @@ dependencies {
 		modImplementation("de.siphalor:amecs-1.18:${project.amecs_version}"){
 			exclude(group: "net.fabricmc.fabric-api")
 			exclude(group: "com.github.astei")
+			exclude(module: "nmuk-1.18")
 		}
 	} else {
 		modCompileOnly("de.siphalor:amecs-1.18:${project.amecs_version}"){
 			exclude(group: "net.fabricmc.fabric-api")
 			exclude(group: "com.github.astei")
+			exclude(module: "nmuk-1.18")
 		}
 	}
 }
