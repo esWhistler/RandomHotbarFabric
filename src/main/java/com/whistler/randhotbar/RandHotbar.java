@@ -48,8 +48,7 @@ public class RandHotbar implements ModInitializer {
 
 		//Events
 		AfterBlockPlacedCallback.EVENT.register((player, world, hand, hitResult) -> {
-			if(KeybindsCommon.randomizerActive){
-				assert MINECRAFT.player != null;
+			if(KeybindsCommon.randomizerActive && currentSettings[MINECRAFT.player.getInventory().selectedSlot] != 0){
 				MINECRAFT.player.getInventory().selectedSlot = UtilFunctions.weighedRandomizer(currentSettings);
 			}
 			return ActionResult.PASS;
@@ -66,7 +65,9 @@ public class RandHotbar implements ModInitializer {
 				float widthOffset = MINECRAFT.getWindow().getScaledWidth()/2.0F - 91F;
 				float heightOffset = (MINECRAFT.interactionManager.getCurrentGameMode() == GameMode.CREATIVE ? MINECRAFT.getWindow().getScaledHeight() - 30.0F : MINECRAFT.getWindow().getScaledHeight() - 48.0F);
 				for (int i = 0; i < 9; ++i) {
-					textRenderer.drawWithShadow(matrixStack, nf.format(currentSettings[i]), widthOffset + i*20.1F, heightOffset, (i%2 == 0 ? 999999 : -1));
+					if (currentSettings[i] != 0) {
+						textRenderer.drawWithShadow(matrixStack, nf.format(currentSettings[i]), widthOffset + i*20.1F, heightOffset, (i%2 == 0 ? 999999 : -1));
+					}
 				}
 			}
 		});
