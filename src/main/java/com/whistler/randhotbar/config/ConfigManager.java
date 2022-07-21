@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Properties;
 
-public class ConfigManager extends AbstractConfigManager {
+public class ConfigManager {
     private final String COMMENT = "Hotbar Randomizer Settings";
     private final String DEFAULT_VALUES = "11.2,11.1,11.1,11.1,11.1,11.1,11.1,11.1,11.1";
     private final String[] CONFIG_TYPES = {"default", "preset1", "preset2", "preset3", "preset4", "preset5", "preset6", "preset7", "preset8", "preset9"};
@@ -59,4 +59,22 @@ public class ConfigManager extends AbstractConfigManager {
         return this.config.read("lastUsed");
     }
 
+
+    private double[] stringToDoubleArray(String string){
+        String[] stringedDoubleArray = string.split(",");
+        double[] doubleArray = new double[stringedDoubleArray.length];
+        for (int i = 0; i < stringedDoubleArray.length; i++) {
+            doubleArray[i] = Double.parseDouble(stringedDoubleArray[i]);
+        }
+        return doubleArray;
+    }
+
+    private String doubleArrayToString(double[] doubleArray){
+        StringBuilder string = new StringBuilder();
+        for (int i = 0; i < doubleArray.length - 1; i++){
+            string.append(doubleArray[i]).append(",");
+        }
+        string.append(doubleArray[doubleArray.length - 1]);
+        return string.toString();
+    }
 }
