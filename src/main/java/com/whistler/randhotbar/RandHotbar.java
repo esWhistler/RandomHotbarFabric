@@ -26,6 +26,7 @@ public class RandHotbar implements ModInitializer {
 
 	public static final boolean AMECS_PRESENT = FabricLoader.getInstance().isModLoaded("amecs");
 
+	public KeybindsCommon keybinds;
 	public static ConfigManager configManager;
 
 	public static double[] currentSettings = new double[9];
@@ -40,22 +41,18 @@ public class RandHotbar implements ModInitializer {
 			throw new RuntimeException(e);
 		}
 
-		if (AMECS_PRESENT) { // Presets only available with Amecs
-			AmecsKeybinds.registerKeybinds();
-		} else {
-			StandardKebinds.registerKeybinds();
-		}
+		keybinds = (AMECS_PRESENT ? new AmecsKeybinds() : new StandardKebinds()); // Presets only available with Amecs
 
 		//Events
 		AfterBlockPlacedCallback.EVENT.register((player, world, hand, hitResult) -> {
-			if(KeybindsCommon.randomizerActive && currentSettings[MINECRAFT.player.getInventory().selectedSlot] != 0){
+			if(keybinds.isRandomizerActive() && currentSettings[MINECRAFT.player.getInventory().selectedSlot] != 0){
 				MINECRAFT.player.getInventory().selectedSlot = UtilFunctions.weighedRandomizer(currentSettings);
 			}
 			return ActionResult.PASS;
 		});
 
 		HudRenderCallback.EVENT.register((matrixStack, delta) -> {
-			if(MINECRAFT.interactionManager.getCurrentGameMode() != GameMode.SPECTATOR && KeybindsCommon.randomizerActive && !MINECRAFT.options.hudHidden){
+			if(MINECRAFT.interactionManager.getCurrentGameMode() != GameMode.SPECTATOR && keybinds.isRandomizerActive() && !MINECRAFT.options.hudHidden){
 				NumberFormat nf = NumberFormat.getInstance();
 				nf.setMaximumFractionDigits(1);
 				nf.setMinimumFractionDigits(1);

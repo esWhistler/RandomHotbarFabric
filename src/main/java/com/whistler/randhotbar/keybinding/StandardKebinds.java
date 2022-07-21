@@ -7,9 +7,9 @@ import net.minecraft.client.gui.screen.Screen;
 
 import java.io.IOException;
 
-public abstract class StandardKebinds extends KeybindsCommon {
-    public static void registerKeybinds(){
-        KeybindsCommon.registerKeybinds();
+public class StandardKebinds extends KeybindsCommon {
+    public StandardKebinds(){
+        super();
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             try {

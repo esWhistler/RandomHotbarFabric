@@ -10,12 +10,12 @@ import net.minecraft.world.GameMode;
 import org.lwjgl.glfw.GLFW;
 
 public abstract class KeybindsCommon {
-    protected static KeyBinding openModMenu;
-    protected static KeyBinding toggleRandomizer;
+    protected KeyBinding openModMenu;
+    protected KeyBinding toggleRandomizer;
 
-    public static boolean randomizerActive = false;
+    protected boolean randomizerActive = false;
 
-    public static void registerKeybinds(){
+    public KeybindsCommon(){
         openModMenu = KeyBindingHelper.registerKeyBinding(new KeyBinding("key." + RandHotbar.MOD_ID + ".openmenu", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_O, "key." + RandHotbar.MOD_ID + ".category"));
         toggleRandomizer = KeyBindingHelper.registerKeyBinding(new KeyBinding("key." + RandHotbar.MOD_ID + ".toggle", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_Y, "key." + RandHotbar.MOD_ID + ".category"));
 
@@ -26,5 +26,9 @@ public abstract class KeybindsCommon {
                 RandHotbar.MINECRAFT.inGameHud.setOverlayMessage(randomizerActive ? new TranslatableText("message." + RandHotbar.MOD_ID + ".toggle.on") : new TranslatableText("message." + RandHotbar.MOD_ID + ".toggle.off"), false);
             }
         });
+    }
+
+    public boolean isRandomizerActive() {
+        return randomizerActive;
     }
 }

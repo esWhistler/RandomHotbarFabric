@@ -15,11 +15,11 @@ import org.lwjgl.glfw.GLFW;
 
 import java.io.IOException;
 
-public abstract class AmecsKeybinds extends KeybindsCommon{
-    private static final KeyBinding[] selectPresets = new KeyBinding[10];
+public class AmecsKeybinds extends KeybindsCommon{
+    private final KeyBinding[] selectPresets = new KeyBinding[10];
 
-    public static void registerKeybinds() {
-        KeybindsCommon.registerKeybinds();
+    public AmecsKeybinds() {
+        super();
 
         int[] key = {GLFW.GLFW_KEY_0, GLFW.GLFW_KEY_1, GLFW.GLFW_KEY_2, GLFW.GLFW_KEY_3, GLFW.GLFW_KEY_4, GLFW.GLFW_KEY_5, GLFW.GLFW_KEY_6, GLFW.GLFW_KEY_7, GLFW.GLFW_KEY_8, GLFW.GLFW_KEY_9};
         for (int i = 0; i < 10; ++i) {
@@ -34,7 +34,7 @@ public abstract class AmecsKeybinds extends KeybindsCommon{
                 }
 
                 for (int i = 0; i < 10; ++i) {
-                    while (selectPresets[i].wasPressed() && KeybindsCommon.randomizerActive && RandHotbar.MINECRAFT.interactionManager.getCurrentGameMode() != GameMode.SPECTATOR) {
+                    while (selectPresets[i].wasPressed() && super.randomizerActive && RandHotbar.MINECRAFT.interactionManager.getCurrentGameMode() != GameMode.SPECTATOR) {
                         RandHotbar.currentSettings = RandHotbar.configManager.readConfigs(i == 0 ? "default" : "preset" + i);
                         RandHotbar.configManager.setLastUsed(i == 0 ? "default" : "preset" + i);
                         RandHotbar.MINECRAFT.inGameHud.setOverlayMessage(Text.of((i == 0 ? "default" : "preset" + i)), false);
