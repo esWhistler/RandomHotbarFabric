@@ -1,7 +1,7 @@
 package com.whistler.randhotbar.keybinding;
 
 import com.whistler.randhotbar.RandHotbar;
-import com.whistler.randhotbar.config.ConfigScreenNoPresets;
+import com.whistler.randhotbar.gui.screen.ConfigScreenNoPresets;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.gui.screen.Screen;
 

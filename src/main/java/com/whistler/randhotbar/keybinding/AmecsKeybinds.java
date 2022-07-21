@@ -1,7 +1,7 @@
 package com.whistler.randhotbar.keybinding;
 
 import com.whistler.randhotbar.RandHotbar;
-import com.whistler.randhotbar.config.ConfigScreenWithPresets;
+import com.whistler.randhotbar.gui.screen.ConfigScreenWithPresets;
 import de.siphalor.amecs.api.AmecsKeyBinding;
 import de.siphalor.amecs.api.KeyModifiers;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;

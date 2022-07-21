@@ -1,4 +1,4 @@
-package com.whistler.randhotbar.config;
+package com.whistler.randhotbar.gui.screen;
 
 import com.whistler.randhotbar.RandHotbar;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;

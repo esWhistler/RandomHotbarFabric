@@ -3,8 +3,8 @@ package com.whistler.randhotbar.integration;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import com.whistler.randhotbar.RandHotbar;
-import com.whistler.randhotbar.config.ConfigScreenNoPresets;
-import com.whistler.randhotbar.config.ConfigScreenWithPresets;
+import com.whistler.randhotbar.gui.screen.ConfigScreenNoPresets;
+import com.whistler.randhotbar.gui.screen.ConfigScreenWithPresets;
 import net.minecraft.client.gui.screen.Screen;
 
 import java.io.IOException;
