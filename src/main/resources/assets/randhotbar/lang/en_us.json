@@ -34,5 +34,6 @@
   "config.randhotbar.variable.hotbar5": "Hotbar 6",
   "config.randhotbar.variable.hotbar6": "Hotbar 7",
   "config.randhotbar.variable.hotbar7": "Hotbar 8",
-  "config.randhotbar.variable.hotbar8": "Hotbar 9"
+  "config.randhotbar.variable.hotbar8": "Hotbar 9",
+  "config.randhotbar.save_condition_unmet" : "All presets should add to 100"
 }
