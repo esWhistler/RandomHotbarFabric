@@ -5,7 +5,7 @@ import com.whistler.randhotbar.event.AfterBlockPlacedCallback;
 import com.whistler.randhotbar.keybinding.AmecsKeybinds;
 import com.whistler.randhotbar.keybinding.KeybindsCommon;
 import com.whistler.randhotbar.keybinding.StandardKebinds;
-import com.whistler.randhotbar.util.UtilFunctions;
+import com.whistler.randhotbar.util.Math;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.loader.api.FabricLoader;
@@ -46,7 +46,7 @@ public class RandHotbar implements ModInitializer {
 		//Events
 		AfterBlockPlacedCallback.EVENT.register((player, world, hand, hitResult) -> {
 			if(keybinds.isRandomizerActive() && currentSettings[MINECRAFT.player.getInventory().selectedSlot] != 0){
-				MINECRAFT.player.getInventory().selectedSlot = UtilFunctions.weighedRandomizer(currentSettings);
+				MINECRAFT.player.getInventory().selectedSlot = Math.weighedRandomizer(currentSettings);
 			}
 			return ActionResult.PASS;
 		});

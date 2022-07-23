@@ -1,6 +1,6 @@
 package com.whistler.randhotbar.util;
 
-public abstract class UtilFunctions {
+public final class Math {
     public static int weighedRandomizer(double[] weights){
         double totalWeight = 0.0;
         for (double d : weights) {
@@ -9,7 +9,7 @@ public abstract class UtilFunctions {
 
         int result = 0;
 
-        for (double random = Math.random() * totalWeight; result < weights.length - 1; ++result) {
+        for (double random = java.lang.Math.random() * totalWeight; result < weights.length - 1; ++result) {
             random -= weights[result];
             if (random <= 0.0) break;
         }
