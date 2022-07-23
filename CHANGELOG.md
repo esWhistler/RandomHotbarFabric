@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0]
+### Added
+- It's now required that percentages add up to 100 in every preset before being able to save the configurations in game
+- Transparency when opening the config screen in game
+
 ## [0.2.0]
 ### Changed
 - Mod now turns off in spectator mode
@@ -19,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - First Pre-Release
 
-[Unreleased]: https://github.com/esWhistler/RandomHotbarFabric/compare/0.2.0-1.18.2...HEAD
+[Unreleased]: https://github.com/esWhistler/RandomHotbarFabric/compare/0.3.0-1.18.2...HEAD
+[0.3.0]: https://github.com/esWhistler/RandomHotbarFabric/compare/0.2.0-1.18.2...0.3.0-1.18.2
 [0.2.0]: https://github.com/esWhistler/RandomHotbarFabric/compare/0.1.0-1.18.2...0.2.0-1.18.2
 [0.1.0]: https://github.com/esWhistler/RandomHotbarFabric/releases/tag/0.1.0-1.18.2
