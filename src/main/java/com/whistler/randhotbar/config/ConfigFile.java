@@ -17,10 +17,10 @@ public class ConfigFile {
         writer.close();
     }
 
-    public String read(String propertyName) throws IOException {
+    public String read(String propertyName, String defaultValue) throws IOException {
         Properties props = this.getProperties();
 
-        return props.getProperty(propertyName);
+        return props.getProperty(propertyName, defaultValue);
     }
 
     public Properties getProperties() throws IOException {

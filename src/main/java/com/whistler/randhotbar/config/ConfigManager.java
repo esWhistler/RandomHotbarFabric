@@ -16,19 +16,28 @@ public class ConfigManager {
         String configPath = "./config/randHotbar.properties";
         config = new ConfigFile(configPath);
 
-        if(! new File(configPath).isFile()){
-            Properties props = new Properties();
-            props.setProperty("lastUsed", "default");
-            for(int i = 0; i < 10; ++i){
-                props.setProperty(i == 0 ? "default" : "preset" + i, DEFAULT_VALUES);
-            }
-            config.write(props, COMMENT);
+        Properties defaultProperties = new Properties();
+        defaultProperties.setProperty("lastUsed", "default");
+        for(int i = 0; i < 10; ++i){
+            defaultProperties.setProperty(CONFIG_TYPES[i], DEFAULT_VALUES);
         }
+
+        Properties props = new Properties(defaultProperties);
+
+        if (new File(configPath).isFile()) {
+            Properties old = config.getProperties();
+            props.setProperty("lastUsed", old.getProperty("lastUsed", "default"));
+            for(int i = 0; i < 10; ++i){
+                String type = CONFIG_TYPES[i];
+                props.setProperty(type, old.getProperty(type, DEFAULT_VALUES));
+            }
+        }
+        config.write(props, COMMENT);
     }
 
     public double[] readConfigs(String type) throws IOException {
         if (Arrays.asList(CONFIG_TYPES).contains(type)){
-            String stringedArray = this.config.read(type);
+            String stringedArray = this.config.read(type, DEFAULT_VALUES);
             return stringToDoubleArray(stringedArray);
         } else {
             throw new IOException("Config type doesn't exist");
@@ -56,7 +65,7 @@ public class ConfigManager {
     }
 
     public String getLastUsed() throws IOException {
-        return this.config.read("lastUsed");
+        return this.config.read("lastUsed", "default");
     }
 
 
