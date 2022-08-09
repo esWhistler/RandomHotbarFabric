@@ -48,6 +48,7 @@ public class ConfigScreenNoPresets { //Amecs not present
         screen.setSavingRunnable(() -> {
             try {
                 RandHotbar.configManager.saveDefault(currentConfig);
+                RandHotbar.currentSettings = RandHotbar.configManager.readConfigs("default");
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
