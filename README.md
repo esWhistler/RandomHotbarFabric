@@ -12,10 +12,8 @@ Minecraft Mod for fabric that provides a toggleable and configurable randomizer 
 
 This mod is in testing stages and being actively developed, be prepeared to meet unforseen bugs and beware the ugly gui.
 
-Requires [**Fabric API**](https://www.curseforge.com/minecraft/mc-mods/fabric-api) and [**Cloth Config**](https://www.curseforge.com/minecraft/mc-mods/cloth-config).
+Requires [**Cloth Config**](https://www.curseforge.com/minecraft/mc-mods/cloth-config).
 
 [**Amecs**](https://www.curseforge.com/minecraft/mc-mods/amecs) recommended (Presets won't work without it).
 
 [**Mod Menu**](https://www.curseforge.com/minecraft/mc-mods/modmenu) suggested.
-
-[![Requires Fabric API](https://i.imgur.com/Ol1Tcf8.png)](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
