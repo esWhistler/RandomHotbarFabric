@@ -13,7 +13,13 @@ public class ConfigManager {
     private final ConfigFile config;
 
     public ConfigManager() throws Exception {
-        String configPath = "./config/randHotbar.properties";
+        String directoryPath = "." + File.pathSeparator + "config" + File.pathSeparator;
+        String configPath = directoryPath + "randHotbar.properties";
+
+        //if config directory doesn't exist, create it
+        File directory = new File(directoryPath);
+        directory.mkdir();
+
         config = new ConfigFile(configPath);
 
         Properties defaultProperties = new Properties();
