@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- GUI was now overlapping with the name of the held block, I really need to find a better place for the percentage numbers
 
 ## [0.4.0]
 ### Changed

@@ -66,7 +66,7 @@ public class RandHotbar implements ModInitializer {
 				} else if (MINECRAFT.player.getArmor() == 0) {
 					heightOffset -= 48.0F;
 				} else {
-					heightOffset -= 58.0F;
+					heightOffset -= 68.0F;
 				}
 				for (int i = 0; i < 9; ++i) {
 					if (currentSettings[i] != 0) {

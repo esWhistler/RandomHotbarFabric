@@ -23,7 +23,8 @@ public abstract class KeybindsCommon {
             while (toggleRandomizer.wasPressed() && RandHotbar.MINECRAFT.interactionManager.getCurrentGameMode() != GameMode.SPECTATOR) {
                 randomizerActive = !randomizerActive;
                 assert RandHotbar.MINECRAFT.player != null;
-                RandHotbar.MINECRAFT.inGameHud.setOverlayMessage(randomizerActive ? new TranslatableText("message." + RandHotbar.MOD_ID + ".toggle.on") : new TranslatableText("message." + RandHotbar.MOD_ID + ".toggle.off"), false);
+                if (RandHotbar.MINECRAFT.interactionManager.getCurrentGameMode() == GameMode.CREATIVE || RandHotbar.MINECRAFT.player.getArmor() == 0)
+                    RandHotbar.MINECRAFT.inGameHud.setOverlayMessage(randomizerActive ? new TranslatableText("message." + RandHotbar.MOD_ID + ".toggle.on") : new TranslatableText("message." + RandHotbar.MOD_ID + ".toggle.off"), false);
             }
         });
     }
