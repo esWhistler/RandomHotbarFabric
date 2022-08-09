@@ -60,7 +60,14 @@ public class RandHotbar implements ModInitializer {
 				nf.setRoundingMode(RoundingMode.HALF_UP);
 				TextRenderer textRenderer = MINECRAFT.textRenderer;
 				float widthOffset = MINECRAFT.getWindow().getScaledWidth()/2.0F - 91F;
-				float heightOffset = (MINECRAFT.interactionManager.getCurrentGameMode() == GameMode.CREATIVE ? MINECRAFT.getWindow().getScaledHeight() - 30.0F : MINECRAFT.getWindow().getScaledHeight() - 48.0F);
+				float heightOffset = MINECRAFT.getWindow().getScaledHeight();
+				if (MINECRAFT.interactionManager.getCurrentGameMode() == GameMode.CREATIVE) {
+					heightOffset -= 30.0F;
+				} else if (MINECRAFT.player.getArmor() == 0) {
+					heightOffset -= 48.0F;
+				} else {
+					heightOffset -= 58.0F;
+				}
 				for (int i = 0; i < 9; ++i) {
 					if (currentSettings[i] != 0) {
 						textRenderer.drawWithShadow(matrixStack, nf.format(currentSettings[i]), widthOffset + i*20.1F, heightOffset, (i%2 == 0 ? 999999 : -1));
